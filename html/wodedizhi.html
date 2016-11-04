@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+	<meta content="yes" name="apple-mobile-web-app-capable">
+	<meta content="black" name="apple-mobile-web-app-status-bar-style">
+	<meta content="telephone=no" name="format-detection">
+	<meta content="email=no" name="format-detection">
+	<!--移动端的常用适配-->
+	<!--样式表引入开始-->
+	<link rel="stylesheet" type="text/css" href="../css/reset.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/swiper-3.3.1.min.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/common.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/wodedizhi.css"/>
+	<!--样式表引入结束-->
+	<title>6688手机商城</title>
+</head>
+<body>
+	<div class="wodedizhi">
+		<i class="iconfont icon-jiantou1"></i>
+		<span>我的地址</span>
+		<span class="xinjian">新建</span>
+	</div>
+	<!--<div class="dizhi">
+		<div class="dizhitop">
+			<span class="xingming"></span>
+			<span class="tel"></span>
+			<p></p>
+		</div>
+		<div class="dizhibottom">
+			<span class="bianji">删除</span>
+		</div>
+	</div>-->
+</body>
+	<!--js引入-->
+	<script src="../js/jquery-1.11.3.js"></script>
+	<script type="text/javascript">
+		if (localStorage.length==0) {
+			var html=$("<div>没有更多数据</div>");
+			$("body").append(html)
+		} else{
+			for (var i=0;i<localStorage.length;i++) {
+				var key=localStorage.key(i);
+				if (key.indexOf("dizhi_")!=-1) {
+					var obj=JSON.parse(localStorage.getItem(key));
+//					var oId=obj["goodsId"]
+					var oName=obj["name"];
+					var oTel=obj["tel"];
+					var oAddress=obj["dizhi"];
+					var html=$("<div class='dizhi'><div class='dizhitop'><span class='xingming'>"+oName+"</span><span class='tel'>"+oTel+"</span><p>"+oAddress+"</p></div><div class='dizhibottom'><span class='bianji'>删除</span></div></div>")
+					$("body").append(html);	
+				}
+			}
+		}
+		$(".xinjian").click(function(){
+			window.location.href="xinjiandizhi.html";
+		})
+		$(".icon-jiantou1").click(function(){
+			history.go(-1)
+		})
+//		$(".bianji").click(function(){
+//			localStorage.removeItem("name");
+//			location.reload();
+//		})
+		$(".bianji").click(function(){
+			var index=$(this).index()
+			var name=$(".xingming").eq(index).html();
+			localStorage.removeItem("dizhi_"+name);
+			location.reload();
+			
+//			alert(name)
+		})
+
+	</script>
+	<script type="text/javascript">
+		$(".dizhi").on("touchstart",function(){
+			$(this).addClass("select").siblings().removeClass("select");
+		})
+	</script>
+</html>
+
+

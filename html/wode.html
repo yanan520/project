@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+	<meta content="yes" name="apple-mobile-web-app-capable">
+	<meta content="black" name="apple-mobile-web-app-status-bar-style">
+	<meta content="telephone=no" name="format-detection">
+	<meta content="email=no" name="format-detection">
+	<!--移动端的常用适配-->
+	<!--样式表引入开始-->
+	<link rel="stylesheet" type="text/css" href="css/reset.css"/>
+	<link rel="stylesheet" type="text/css" href="css/swiper-3.3.1.min.css"/>
+	<link rel="stylesheet" type="text/css" href="css/common.css"/>
+	<link rel="stylesheet" href="sass/wode.css" />
+	<!--样式表引入结束-->
+	<title>6688手机商城</title>
+</head>
+<body>
+	<section id="top">
+		<div id="my" class="page">
+			<div class="wode">
+				<span class="my">我的</span>
+				<i class="iconfont icon-shezhi"></i>
+			</div>
+			<div class="welcome">
+				<span id="welcome">
+					欢迎来到6688
+				</span>
+				<span id="dlzc">
+					登录/注册
+				</span>
+			</div>
+			<ul class="list">
+				<li>
+					<i class="iconfont icon-icon17"  style="background: #ffd670;"></i>
+					<span>我的订单</span>
+					<i class="iconfont icon-jiantou"></i>
+				</li>
+				<li>
+					<i class="iconfont icon-lishidingdan"  style="background: #ff7800;"></i>
+					<span>历史订单</span>
+					<i class="iconfont icon-jiantou"></i>
+				</li>
+				<li>
+					<i class="iconfont icon-xiazai11" style="background: #acd183;"></i>
+					<span>我的关注</span>
+					<i class="iconfont icon-jiantou"></i>
+				</li>
+				<li>
+					<i class="iconfont icon-feiji" style="background: #fd70ff;"></i>
+					<span class="address">我的地址</span>
+					<i class="iconfont icon-jiantou"></i>
+				</li>
+				<li>
+					<i class="iconfont icon-renminbi" style="background: #f54747;"></i>
+					<span>我的账户</span>
+					<i class="iconfont icon-jiantou"></i>
+				</li>
+				<li>
+					<i class="iconfont icon-duihuakuang" style="background: #6bceb5;"></i>
+					<span>帮助中心</span>
+					<i class="iconfont icon-jiantou"></i>
+				</li>
+			</ul>
+			
+		</div>
+	</section>
+</body>
+	<!--js引入-->
+	<script src="js/jquery-1.11.3.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/swiper-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		var userName=localStorage.getItem("userName");
+		if (userName!=null) {
+			$("#welcome").remove();
+			$("#dlzc").remove();
+			var html="<div class='nWelcome'><i class='iconfont icon-ren'></i></div><p>"+userName+"</p>";
+			$(".welcome").append(html);
+		}
+		
+		$(".icon-shezhi").click(function(){
+			location.reload();
+			localStorage.removeItem("userName");
+//			var oSpan="<span id='welcome'>欢迎来到6688</span><span id='dlzc'>登录/注册</span>";
+//			$(".welcome").append(oSpan);
+		})
+		$("#dlzc").click(function(){
+			window.location.href="login.html";
+		})
+		$(".address").click(function(){
+			window.location.href="wodedizhi.html";
+		})
+	</script>
+</html>
+

@@ -1,0 +1,245 @@
+#header {
+  width: 100%;
+  height: 5.6rem;
+  position: fixed;
+  top: 0;
+  left: 0; }
+  #header .title {
+    width: 100%;
+    height: 3.7rem;
+    border: 1px solid #EBEBEB;
+    background: #F5F5F5;
+    position: relative; }
+    #header .title .icon {
+      width: 4rem;
+      height: 3.7rem;
+      text-align: center;
+      line-height: 3.7rem;
+      font-size: 1.3rem;
+      position: absolute;
+      left: 0;
+      top: 0; }
+    #header .title .headerTitle {
+      width: 10rem;
+      height: 3.7rem;
+      text-align: center;
+      line-height: 3.7rem;
+      font-size: 1.68rem;
+      font-weight: 500;
+      position: absolute;
+      left: 50%;
+      top: 0;
+      margin-left: -5rem; }
+    #header .title .delete {
+      width: 5rem;
+      height: 3.7rem;
+      font-size: 1.3rem;
+      text-decoration: underline;
+      text-align: center;
+      line-height: 3.7rem;
+      position: absolute;
+      right: 0;
+      top: 0; }
+  #header .tips {
+    width: 100%;
+    height: 1.6rem;
+    font-size: 1.3rem;
+    border: 1px solid #EBEBEB;
+    text-align: center;
+    color: #F5666C; }
+
+#main {
+  width: 100%; }
+  #main .goodsList {
+    width: 100%;
+    height: 11.8rem;
+    border-top: 1px solid #CCCCCC;
+    border-bottom: 1px solid #EBEBEB;
+    margin: 1rem 0; }
+    #main .goodsList .checkOne {
+      width: 4.2rem;
+      height: 10.2rem;
+      float: left; }
+      #main .goodsList .checkOne input {
+        width: 1.6rem;
+        height: 1.6rem;
+        margin: 5.1rem 1.3rem 3.6rem; }
+    #main .goodsList .goodsImg {
+      width: 7.8rem;
+      height: 7.8rem;
+      float: left;
+      margin: 2rem 0 0.5rem; }
+      #main .goodsList .goodsImg img {
+        width: 7.8rem;
+        height: 7.8rem; }
+    #main .goodsList .goodsInfo {
+      width: 10rem;
+      height: 8.1rem;
+      font-size: 1.2rem;
+      color: #999999;
+      float: left;
+      margin: 2rem 0.8rem 0rem; }
+      #main .goodsList .goodsInfo .goodsName {
+        color: #333333;
+        font-size: 1.2rem;
+        max-height: 4.5rem;
+        overflow: hidden; }
+      #main .goodsList .goodsInfo .count {
+        width: 16rem;
+        height: 1.4rem; }
+      #main .goodsList .goodsInfo .count .content {
+        line-height: 1.4rem;
+        float: left; }
+      #main .goodsList .goodsInfo .count .add {
+        width: 50%;
+        height: 1.4rem;
+        margin-left: 0.2rem;
+        float: left;
+        text-align: center;
+        line-height: 1.4rem; }
+      #main .goodsList .goodsInfo .count .add .down, #main .goodsList .goodsInfo .count .add .up {
+        width: 1.4rem;
+        height: 1.4rem;
+        border: 1px solid #CCCCCC;
+        float: left; }
+      #main .goodsList .goodsInfo .count .add .num {
+        width: 2rem;
+        height: 1.4rem;
+        color: #404040;
+        border: 1px solid #CCCCCC;
+        float: left;
+        margin: 0 0.5rem; }
+    #main .goodsList .more {
+      width: 2rem;
+      height: 2rem;
+      margin: 4.9rem 0 3.4rem;
+      float: right;
+      margin-right: 1rem;
+      font-size: 2rem;
+      color: #CCCCCC; }
+    #main .goodsList .listTotal {
+      width: 95%;
+      height: 1.5rem;
+      float: left;
+      color: #999999;
+      text-align: right; }
+      #main .goodsList .listTotal b {
+        color: #DC4E2A; }
+
+#footer {
+  width: 100%;
+  height: 3.5rem;
+  color: #fff;
+  font-size: 1.3rem;
+  line-height: 3.5rem;
+  background: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  bottom: 0;
+  left: 0; }
+  #footer .checkbox {
+    height: 3.5rem;
+    width: 3.5rem;
+    float: left; }
+    #footer .checkbox input {
+      width: 1.5rem;
+      height: 1.5rem;
+      margin: 1rem; }
+  #footer .quanxuan {
+    height: 3.5rem;
+    width: 3rem;
+    float: left; }
+  #footer .total {
+    height: 3.5rem;
+    width: 12rem;
+    float: left; }
+  #footer .jiesuan {
+    float: right;
+    height: 2.5rem;
+    margin: 0.5rem 0.5rem 0;
+    width: 7rem;
+    line-height: 2.5rem;
+    text-align: center;
+    background: #DB3B1B;
+    border-radius: 5px; }
+
+#empt .header {
+  height: 3.7rem;
+  width: 100%;
+  height: 3.7rem;
+  border-bottom: 1px solid #EBEBEB;
+  background: #F5F5F5;
+  position: relative; }
+
+#empt .header .icon {
+  width: 4rem;
+  height: 3.7rem;
+  text-align: center;
+  line-height: 3.7rem;
+  font-size: 1.3rem;
+  position: absolute;
+  left: 0;
+  top: 0; }
+
+#empt .header .headerTitle {
+  width: 10rem;
+  height: 3.7rem;
+  text-align: center;
+  line-height: 3.7rem;
+  font-size: 1.68rem;
+  font-weight: 500;
+  position: absolute;
+  left: 50%;
+  top: 0;
+  margin-left: -5rem; }
+
+#empt {
+  width: 100%;
+  height: 100%;
+  background: #EBEBEB; }
+
+#empt .empt_icon {
+  width: 100%;
+  height: 18rem;
+  line-height: 18rem;
+  text-align: center; }
+
+#empt .empt_icon .icon-gouwuche {
+  color: #E4E4E4;
+  font-size: 10rem; }
+
+#empt p {
+  width: 100%;
+  text-align: center;
+  color: #808080;
+  font-size: 1.6rem; }
+
+#empt .gogo {
+  width: 18rem;
+  height: 3.6rem;
+  margin: 2rem auto; }
+
+#empt .quguangguang, #empt .shoucang {
+  width: 8rem;
+  height: 3.6rem;
+  border-radius: 5px;
+  background: #FF9A0D;
+  text-align: center;
+  line-height: 3.6rem;
+  font-size: 1.2rem;
+  color: #fff; }
+
+#empt .quguangguang {
+  float: left; }
+
+#empt .shoucang {
+  float: left;
+  margin-left: 2rem; }
+
+#empt .tips {
+  width: 100%;
+  height: 1.6rem;
+  font-size: 1.3rem;
+  text-align: center;
+  color: #F5666C; }
+
+/*# sourceMappingURL=gouwuche.css.map */

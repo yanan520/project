@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<meta content="telephone=no" name="format-detection">
+		<meta content="email=no" name="format-detection">
+		<!--移动端的常用适配-->
+		<!--样式表引入开始-->
+		<link rel="stylesheet" type="text/css" href="../css/reset.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/swiper-3.3.1.min.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/common.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/goodlist.css"/>
+		<!--样式表引入结束-->
+		<title>商品列表</title>
+	</head>
+	<body>
+		<header id="header">
+			<div>
+				<i class="iconfont icon-jiantou1"></i><p id="tips"></p>
+			</div>
+			<nav>
+				<li class="active"><i class="iconfont icon-baobao"></i>新品</li>
+				<li><i class="iconfont icon-jingzhenglidejiage01"></i>价格</li>
+				<li><i class="iconfont icon-wodeshoucang"></i>人气</li>
+			</nav>
+		</header>
+		<section id="main">
+			<!--<div class="list">
+				<div class="pic">
+					<a href="shopDetail.html"><img src="../images/sl.jpg"/></a>
+				</div>
+				<div class="dec">
+					<p class="words">[预定特价]阿克苏冰糖心苹果12个礼盒装-约6-7斤每个85m...</p>
+					<p class="price"><span>￥&nbsp;</span>119.00</p>
+				</div>
+			</div>-->
+			
+			<!--$(document).on("touchstart",".list",function(e){
+	    	window.location.href="shopDetail.html?id="+$(this).attr("id")+"&index=1";
+		})-->
+		</section>
+	</body>
+	<script type="text/javascript" src="../js/jquery-1.11.3.js"></script>
+	<script type="text/javascript">
+		$("#header nav li").on("touchstart",function(){
+			$(this).addClass("active").siblings().removeClass("active");
+		})
+	</script>
+	<script type="text/javascript">
+		//动态生成主体部分的内容
+		/*<div class="list">
+			<div class="pic">
+				<a href="#"><img src="../images/sl.jpg"/></a>
+			</div>
+			<div class="dec">
+				<p class="words">[预定特价]阿克苏冰糖心苹果12个礼盒装-约6-7斤每个85m...</p>
+				<p class="price"><span>￥&nbsp;</span>119.00</p>
+			</div>
+		</div>*/
+		$.ajax({
+			type:"get",
+			url:"../mockdata/goodlist.json",
+			dataType:"json",
+			success:function(result)
+			{
+				var ID=window.location.href.split("?")[1].split("&")[0].split("=")[1];
+				for(var i=0;i<result.length;i++)
+				{
+					var id=result[i]["id"];
+					if(ID==id)
+					{
+						var src=result[i]["src"];
+						var dec=result[i]["dec"];
+						var price=result[i]["price"];
+						var tips=result[i]["tips"];
+						var html="";
+						for(var j=0;j<src.length;j++)
+						{
+							var id1=id+(j+1);
+							html+="<div date-price="+price[j]+" class='list'><div class='pic'><a href=shopDetail.html?id="+id1+"&index=1><img src=https://tony-wei1990.github.io/img/images/"+src[j]+" /></a></div><div class='dec'><p class='words'>"+dec[j]+"</p><p class='price'><span>￥&nbsp;</span>"+price[j]+"</p></div></div>"
+						}
+						document.getElementById("main").innerHTML=html;
+						document.getElementById("tips").innerHTML=tips;
+					}
+				}
+				/*增加了升序和降序排列*/	
+				var list = [];
+				var flag=false;
+			    var source = $("#main .list");
+			    source.each(function (index, value) 
+			    {
+			        list.push($(value));
+			    })
+			
+				$("#header nav li").eq(1).on("touchstart",function(){
+				    if(!flag)
+				    {
+				        list.sort(function (a, b) {
+				            return a.attr("date-price") - b.attr("date-price");
+				        });
+				        $("#main").html("");
+				        flag=true;
+				    }  
+				    else
+				    {
+				    	list.sort(function (a, b) {
+				            return b.attr("date-price") - a.attr("date-price");
+				        });
+				        $("#main").html("");
+				        
+				        flag=false;
+				    }
+				    for (var i = 0; i < list.length; i++) 
+				    {
+				        $("#main").append(list[i]);
+				    }
+			    });
+			}
+		})
+		
+		//上面的返回键;
+//		$(document).on("touchstart",".list",function(e){
+//	    	window.location.href="shopDetail.html?id="+$(this).attr("id")+"&index=1";
+//		})
+		/*这个是返回键*/
+		$("#header .icon-jiantou1").on("touchstart",function(){
+			var index=window.location.href.split("?")[1].split("&")[1].split("=")[1];
+			window.location.href="../index.html?Index="+index;
+		})
+	</script>
+</html>

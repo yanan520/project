@@ -1,0 +1,120 @@
+body, html {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #ecebeb; }
+
+#top {
+  flex: 9;
+  position: relative; }
+
+#top .page {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%; }
+
+#my .wode {
+  background: #f7f7f7;
+  width: 100%;
+  height: 6rem;
+  font-size: 1.5rem;
+  text-align: center;
+  line-height: 6rem; }
+  #my .wode .my {
+    padding-left: 3.5rem; }
+  #my .wode .icon-shezhi {
+    font-size: 2.5rem;
+    float: right;
+    padding-right: 1rem; }
+
+#my .welcome {
+  width: 100%;
+  height: 10.5rem;
+  background: -webkit-linear-gradient(left, #d16a44, #f6b958, #ebbf7b);
+  text-align: center; }
+  #my .welcome #welcome {
+    padding-top: 2.5rem;
+    display: block;
+    color: #fff;
+    font-size: 1.2rem; }
+  #my .welcome #dlzc {
+    font-size: 1.2rem;
+    line-height: 3rem;
+    display: block;
+    width: 7.5rem;
+    height: 3rem;
+    background: -webkit-linear-gradient(left, #f4cea7, #fbe4b4);
+    margin: 1rem auto 0;
+    border-radius: 0.5rem;
+    color: #754614; }
+  #my .welcome p {
+    margin-top: 2rem;
+    color: #fff;
+    font-size: 1.2rem; }
+
+#my .list {
+  width: 100%;
+  height: auto;
+  margin-top: 1rem; }
+  #my .list li {
+    height: 3.5rem;
+    line-height: 3.5rem;
+    border-bottom: 1px solid #ecebeb;
+    font-size: 1.5rem;
+    background: #fff; }
+    #my .list li i:nth-of-type(1) {
+      display: inline-block;
+      width: 2.5rem;
+      height: 2.5rem;
+      background: red;
+      line-height: 2.5rem;
+      text-align: center;
+      border-radius: 0.5rem;
+      margin-left: 2rem;
+      margin-right: 0.5rem;
+      margin-bottom: 1rem;
+      color: #fff; }
+    #my .list li i:nth-of-type(2) {
+      float: right;
+      margin-right: 1.5rem; }
+    #my .list li i.iconfont {
+      font-size: 1.5rem; }
+
+#footer {
+  flex: 1;
+  width: 100%;
+  background: white;
+  display: flex;
+  align-items: center; }
+
+#footer nav {
+  display: flex;
+  width: 100%;
+  height: 100%; }
+
+#footer nav li {
+  flex: 1;
+  text-align: center; }
+
+#footer nav li i {
+  font-size: 2.5rem; }
+
+#footer nav li.select {
+  color: #ff6f19; }
+
+.nWelcome {
+  position: relative;
+  width: 5rem;
+  height: 5rem;
+  background: #e8e8e8;
+  border-radius: 50%;
+  margin: 0 auto;
+  top: 1rem; }
+  .nWelcome i.iconfont {
+    font-size: 3.5rem;
+    color: #fff; }
+
+/*# sourceMappingURL=wode.css.map */

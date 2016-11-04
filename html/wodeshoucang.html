@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+	<meta content="yes" name="apple-mobile-web-app-capable">
+	<meta content="black" name="apple-mobile-web-app-status-bar-style">
+	<meta content="telephone=no" name="format-detection">
+	<meta content="email=no" name="format-detection">
+	<!--移动端的常用适配-->
+	<!--样式表引入开始-->
+	<link rel="stylesheet" type="text/css" href="../css/reset.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/swiper-3.3.1.min.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/common.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/wodeshoucang.css"/>
+	<!--样式表引入结束-->
+	<title>6688手机商城</title>
+</head>
+<body>
+	<div class="xinjiandizhi">
+		<i class="iconfont icon-jiantou1"></i>
+		<span>我的收藏</span>
+	</div>
+	<!--<div class="scgoods">
+		<div class="goodsImg">
+			<img src="../images/tc20120521002.jpg"/>
+		</div>
+		<div class="goodsxq">
+			<p>新疆伊犁察布查尔有机大米
+			1kg（五袋以上每袋特价49元）</p>
+			<p class="goodsprice">￥58.00</p>
+		</div>
+	</div>-->
+</body>
+	<!--js引入-->
+	<script src="../js/jquery-1.11.3.js"></script>
+	<script type="text/javascript">
+		
+		if (localStorage.length==0) {
+			var html=$("<div>没有更多数据</div>");
+			$("body").append(html)
+		} else{
+			for (var i=0;i<localStorage.length;i++) {
+				var key=localStorage.key(i);
+				if (key.indexOf("like_")!=-1) {
+					var obj=JSON.parse(localStorage.getItem(key));
+					var oId=obj["goodsId"]
+					var oSrc=obj["goodsImg"];
+					var oMiao=obj["goodsName"];
+					var oPrice=obj["goodsPrice"];
+					var html=$("<div class='scgoods' data-id="+oId+"><div class='goodsImg'><img src='../images/"+oSrc+"'/></div><div class='goodsxq'><p>"+oMiao+"</p><p class='goodsprice'>￥"+oPrice+"</p></div></div><br><br>")
+					$("body").append(html);	
+				}
+			}
+		}
+		$(".scgoods").click(function(){
+			
+			window.location.href="shopDetail.html?id="+id;
+		})
+		
+		
+//		11-4 添加返回事件
+	    $(".iconfont").click(function(e){
+	    	var evt=window.event||e;
+	    	if(evt.stopPropagation){
+	    		evt.stopPropagation;
+	    	}
+	    	else{
+	    		evt.cancelBubble=true;
+	    	}
+	    	history.go(-1);
+	    })
+	    
+	 
+	
+		
+	</script>
+</html>
+
+

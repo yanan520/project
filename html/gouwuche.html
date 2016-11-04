@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<meta content="telephone=no" name="format-detection">
+		<meta content="email=no" name="format-detection">
+		<!--移动端的常用适配-->
+		<!--样式表引入开始-->
+		<link rel="stylesheet" type="text/css" href="../css/reset.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/common.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/gouwuche.css"/>
+		<!--样式表引入结束-->
+		<title>6688手机商城</title>
+	</head>
+	<body>
+		<header id="header">
+			<div class="title">
+				<div class="icon"><i class="iconfont icon-jiantou1"></i></div>
+				<div class="headerTitle">购物车</div>
+				<div class="delete">删除</div>
+			</div>
+			<div class="tips">每单满300就95折，您还差300.00元就可以享受啦</div>
+		</header>
+		<div style="width: 100%;height: 5.6rem;"></div>
+		<section id="main">
+			<!--<div class="goodsList" data-id="">
+				<div class="checkOne"><input class="check-one" type="checkbox" /></div>
+				<div class="goodsImg"><img src="images/tc20160913001.jpg" /></div>
+				<div class="goodsInfo">
+					<p class="goodsName">新疆有机红提葡萄　(2kg)　-鲜果上市特价</p>
+					<p class="goodsPrice">价格： ￥<b>66.00</b></p>
+					<div class="count">
+						<div class="content">数量：</div>
+						<div class="add">
+							<div class="down">-</div>
+							<div class="num">1</div>
+							<div class="up">+</div>
+						</div>						
+					</div>
+					
+				</div>
+				<div class="more">&gt;</div>
+				<div class="listTotal">小计：<b>￥66.00</b>　<span>【删除】</span></div>
+			</div>-->
+		
+									
+		</section>
+		<div style="width: 100%;height: 3.5rem;"></div>
+		<footer id="footer">
+			<div class="checkbox">
+				<input type="checkbox" id="checkall" />
+			</div>
+			<div class="quanxuan">全选</div>
+			<div class="total">总计： ￥<span>00.00</span></div>
+			<div class="jiesuan">去结算(<span>0</span>)</div>
+		</footer>
+	</body>
+	<script type="text/javascript" src="../js/jquery-1.11.3.js" ></script>
+	<script type="text/javascript">
+	
+		getData();//从localStorage动态添加商品
+		function getData(){
+			var goods_num=0;
+			if(localStorage.length==0){
+				var html="<div id='empt'><header class='header'><div class='icon'><i class='iconfont icon-jiantou1'></i></div><div class='headerTitle'>购物车</div></header><div class='empt_icon'><i class='iconfont icon-gouwuche'></i></div><p>购物车还是空的，去购物吧！</p><div class='gogo'><div class='quguangguang'>随便逛逛</div><div class='shoucang'>我的收藏</div></div><div class='tips'>每单满300就95折，您还差300.00元就可以享受啦</div></div>"
+				$("body").html(html);
+			}else{
+				for (var i=0;i<localStorage.length;i++){
+					var key=localStorage.key(i);
+					if(key.indexOf("goods_")!=-1){
+						goods_num++;
+						var obj=JSON.parse(localStorage.getItem(key));
+						var goodsId=obj["goodsId"];
+						var goodsnum=obj["goodsnum"];
+						var goodsImg=obj["goodsImg"];
+						var goodsName=obj["goodsName"];
+						var goodsPrice=obj["goodsPrice"]*1;
+						//https://tony-wei1990.github.io/img/images/xianguo5.jpg 
+						var goodsList=$("<div class='goodsList' data-id="+goodsId+"><div class='checkOne'><input class='check-one' type='checkbox' /></div><div class='goodsImg'><img src='https://tony-wei1990.github.io/img/images/"+goodsImg+"' /></div><div class='goodsInfo'><p class='goodsName'>"+goodsName+"</p><p class='goodsPrice'>价格： ￥<b>"+goodsPrice+"</b></p><div class='count'><div class='content'>数量：</div><div class='add'><div class='down'>-</div><div class='num'>"+goodsnum+"</div><div class='up'>+</div></div></div>	</div><div class='more'>&gt;</div><div class='listTotal'>小计：<b>￥"+goodsPrice*goodsnum+"</b>　<span>【删除】</span></div></div>")
+						$("#main").append(goodsList);						
+					}			
+				}
+				if(goods_num==0){
+					var html="<div id='empt'><header class='header'><div class='icon'><i class='iconfont icon-jiantou1'></i></div><div class='headerTitle'>购物车</div></header><div class='empt_icon'><i class='iconfont icon-gouwuche'></i></div><p>购物车还是空的，去购物吧！</p><div class='gogo'><div class='quguangguang'>随便逛逛</div><div class='shoucang'>我的收藏</div></div><div class='tips'>每单满300就95折，您还差300.00元就可以享受啦</div></div>"
+					$("body").html(html);
+				}
+			}
+		}
+		
+		
+			
+		
+		
+		//增加数量
+		for (var i=0;i<$(".count .add .up").length;i++){
+			$(".count .add .up").eq(i).on("touchstart",function(){
+				var num=$(this).prev().html()*1+1;
+				$(this).prev().html(num);
+				var price=$(this).parent().parent().prev().find("b").html()*1;
+				$(this).parent().parent().parent().next().next().find("b").html("￥"+price*num);
+				setTotalPrice();
+				var key=$(this).parent().parent().parent().parent().attr("data-id");
+				changeLocalStorage("goods_"+key,num);
+			})
+		}
+		
+		//减少数量
+		for (var i=0;i<$(".count .add .down").length;i++){
+			$(".count .add .down").eq(i).on("touchstart",function(){
+				var num=$(this).next().html()*1-1;
+				if(num<1){num=1};
+				$(this).next().html(num);
+				var price=$(this).parent().parent().prev().find("b").html()*1;
+				$(this).parent().parent().parent().next().next().find("b").html("￥"+price*num);
+				setTotalPrice();
+				var key=$(this).parent().parent().parent().parent().attr("data-id");
+				changeLocalStorage("goods_"+key,num);
+			})
+		}
+		
+		//修改localStorage的数据
+		function changeLocalStorage(key,num){
+			var obj=JSON.parse(localStorage.getItem(key));
+				var goodsId=obj["goodsId"];
+				var goodsImg=obj["goodsImg"];
+				var goodsName=obj["goodsName"];
+				var goodsPrice=obj["goodsPrice"]*1;	
+				var goodsList={"goodsId":goodsId,"goodsImg":goodsImg,"goodsName":goodsName,"goodsPrice":goodsPrice,"goodsnum":num}
+			localStorage.setItem("goods_"+goodsId,JSON.stringify(goodsList));
+		}
+
+
+		//计算总价
+		var checkall=document.getElementById("checkall");
+		var checkList=document.getElementsByClassName("check-one");
+		//$("#checkall").on("touchstart",function(e){
+		$("#checkall").click(function(){
+			for(var i in checkList){
+				checkList[i].checked=this.checked;
+				//alert(this.checked)
+			}
+			setTotalPrice();
+			if(this.checked){
+				var list_num=checkList.length;
+				$("#footer .jiesuan span").html(list_num);
+			}else{
+				$("#footer .jiesuan span").html(0);
+			}
+		})
+		//$(".check-one").on("touchstart",function(e){		
+		$(".check-one").click(function(){
+			var list_num=$("#footer .jiesuan span").html()*1;
+			if(this.checked){
+				list_num++;
+			}else{
+				list_num--;		
+			}
+			setTotalPrice();
+			$("#footer .jiesuan span").html(list_num);
+		})
+		
+		function setTotalPrice(){
+			var total_price=0;
+			for(var i=0;i<checkList.length;i++){
+				if(checkList[i].checked){				
+					var each_total=$(".check-one").eq(i).parent().parent().find(".listTotal").find("b").html().substring(1)*1;
+					total_price+=each_total;
+				}
+			}
+			if(total_price>300){
+				total_price=(total_price*0.95).toFixed(2);
+				$("#header .tips").html("每单满300就95折，您的订单生成后会自动95折");
+			}
+			total_price=(total_price*1).toFixed(2);
+			$("#footer .total span").html(total_price);
+		}
+		
+			
+		
+		
+		
+		//删除商品
+		$(document).on("touchstart","#main .goodsList .listTotal span",function(){
+			$(this).parent().parent().remove();
+			setTotalPrice();
+			var key=$(this).parent().parent().attr("data-id");
+			localStorage.removeItem("goods_"+key);
+		})
+		
+		$(document).on("touchstart","#header .title .delete",function(){
+			var html="<div id='empt'><header class='header'><div class='icon'><i class='iconfont icon-jiantou1'></i></div><div class='headerTitle'>购物车</div></header><div class='empt_icon'><i class='iconfont icon-gouwuche'></i></div><p>购物车还是空的，去购物吧！</p><div class='gogo'><div class='quguangguang'>随便逛逛</div><div class='shoucang'>我的收藏</div></div><div class='tips'>每单满300就95折，您还差300.00元就可以享受啦</div></div>"
+			$("body").html(html);
+			localStorage.clear();
+			$(document).on("touchstart","#empt .header .icon",function(){
+				window.history.go(-1);
+			})
+		})
+		
+		$("#empt .quguangguang").click(function(){
+			window.location.href="../index.html";
+		})
+		$("#empt .shoucang").click(function(){
+			window.location.href="../html/wodeshoucang.html";
+		})
+		
+		
+		
+		
+		
+		$(document).on("touchstart",".goodsList .more",function(){
+			var goodsId=$(this).parent().attr("data-id");
+			window.open("shopDetail.html?id="+goodsId,'_self');
+		})
+		
+		$(document).on("touchstart","#header .icon-jiantou1",function(){
+			window.history.go(-1);
+		})
+	</script>
+	<script type="text/javascript">
+		$(".jiesuan").click(function(){
+			var num=$("#footer .total span").html()
+			window.location.href="jiesuan.html?num="+num;
+		})
+	</script>
+</html>

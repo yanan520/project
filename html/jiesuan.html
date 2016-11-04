@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<meta content="telephone=no" name="format-detection">
+		<meta content="email=no" name="format-detection">
+		<!--移动端的常用适配-->
+		<!--样式表引入开始-->
+		<link rel="stylesheet" type="text/css" href="../css/reset.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/swiper-3.3.1.min.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/common.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/jiesuan.css"/>
+		<style type="text/css">
+			#wrap{
+				width:100%;
+				height:100%;
+			}
+		</style>
+		<title></title>
+	</head>
+	<body>
+		<div id="wrap">
+			<header id="header">
+				<i class="iconfont icon-jiantou1"></i>
+				<span class="order">填写订单</span>
+			</header>
+			<section id="main">
+				<section id="address">
+					<p id="p1">
+						<span id="username">
+							危国
+						</span>
+						&nbsp;&nbsp;&nbsp;
+						<span id="tel">
+							13027181139
+						</span>
+					</p>
+					<p id="p2">
+						湖北武汉市江岸区循礼门
+					</p>
+				</section>
+				<section id="koukuan">
+					<p>优先扣除E元、预付款</p>
+				</section>
+				<section id="qingdan">
+					<i class="iconfont icon-gougou"></i>
+					<span>需要购物清单</span>
+				</section>
+				<section id="shoppinglist">
+					商品清单
+					<i class="iconfont icon-jiantou"></i>
+				</section>
+				
+				<section id="liuyan">
+					<p contenteditable="true">
+						留言，最多200字
+					</p>
+				</section>
+				<section id="good">
+					<p>
+						<span>商品金额：</span>
+						<i>￥00.00</i>
+					</p>
+					<p>
+						<span>运费：</span>
+						<i>￥00.00</i>
+					</p>
+					<p>
+						<span>订单金额：</span>
+						<i>￥00.00</i>
+					</p>
+				</section>
+				<section id="fapiao">
+					<span>
+						发票信息
+					</span>
+					<i class="iconfont icon-jiantou"></i>
+				</section>
+				
+			</section>
+			<footer id="footer">
+				<span id="total">应付总额：</span>
+				<span id="total-num">￥96.00</span>
+				<p>
+					<button id="kefu">在线客服</button>
+					<button id="tijiao">提交订单</button>
+				</p>
+			</footer>
+		</div>
+	</body>
+	<script type="text/javascript" src="../js/jquery-1.11.3.js"></script>
+	<script type="text/javascript">
+		var num=(window.location.href.split("?")[1].split("=")[1]*1).toFixed(2);
+		$("#good p").eq(0).find("i").html("￥"+num);
+		var rate=($("#good p").eq(1).find("i").html().substring(1))*1;
+		var endMount=(num+rate)*1;
+		$("#good p").eq(2).find("i").html("￥"+endMount.toFixed(2));
+		$("#total-num").html(endMount.toFixed(2));
+		$("#header .icon-jiantou1").on("touchstart",function(){
+			window.history.go(-1);
+		})
+	</script>
+	<script type="text/javascript">
+		var flag=false;
+		$("#qingdan .icon-gougou").on("touchstart",function(){
+			if(!flag)
+			{
+				$(this).css({"color":"green"});
+				flag=true;
+			}
+			else
+			{
+				$(this).css({"color":"black"});
+				flag=false;
+			}
+			
+		})
+	</script>
+	<script type="text/javascript">
+		/*解决手机键盘弹出页面压缩的问题;*/
+		var viewHeight = window.innerHeight; //获取可写区域高度
+		$("#liuyan p").focus(function()
+		{
+			$("#wrap").css("height",viewHeight);
+		}).blur(function()
+		{
+			$("#wrap").css("height","100%");
+		});
+
+	</script>
+</html>

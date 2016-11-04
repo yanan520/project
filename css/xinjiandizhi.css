@@ -1,0 +1,45 @@
+body, html {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #ecebeb; }
+
+.xinjiandizhi {
+  background: #f7f7f7;
+  width: 100%;
+  height: 6rem;
+  font-size: 1.5rem;
+  text-align: center;
+  line-height: 6rem; }
+  .xinjiandizhi i.iconfont {
+    float: left;
+    margin-left: 1rem; }
+  .xinjiandizhi .baocun {
+    float: right;
+    padding-right: 1.5rem; }
+
+.xiangxi {
+  width: 94%;
+  height: auto;
+  margin: 2rem auto;
+  color: #969896; }
+  .xiangxi span {
+    display: inline-block;
+    width: 25%;
+    text-align: right;
+    color: #000;
+    margin-right: 0.5rem; }
+  .xiangxi input {
+    height: 2.5rem;
+    width: 70%;
+    border: 1px solid #969896;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+    outline: none; }
+  .xiangxi .shurudizhi {
+    height: 12rem; }
+  .xiangxi #city {
+    margin-bottom: 1rem; }
+
+/*# sourceMappingURL=xinjiandizhi.css.map */

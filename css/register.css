@@ -1,0 +1,111 @@
+body, html {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #ecebeb; }
+
+.register {
+  background: #f7f7f7;
+  width: 100%;
+  height: 6rem;
+  font-size: 1.5rem;
+  text-align: center;
+  line-height: 6rem; }
+  .register span {
+    padding-right: 2.5rem; }
+  .register i.iconfont {
+    float: left;
+    margin-left: 1rem; }
+
+.oInput {
+  position: relative;
+  width: 100%;
+  height: 20rem;
+  background: #fff;
+  font-size: 1.5rem; }
+  .oInput .iconfont {
+    color: #969896; }
+  .oInput label {
+    margin-left: 1rem; }
+  .oInput .iconfont {
+    font-size: 2rem; }
+  .oInput input {
+    color: #969896;
+    width: 20.5rem;
+    outline: none;
+    border: none;
+    line-height: 3.9rem;
+    margin-left: 0.5rem;
+    border-bottom: 1px solid #ebebeb; }
+  .oInput .liquan {
+    margin: 0;
+    border: 0;
+    padding-left: 1rem; }
+  .oInput .huoqu {
+    position: absolute;
+    right: 1rem;
+    top: 0.5rem;
+    display: inline-block;
+    width: 6rem;
+    height: 3rem;
+    font-size: 1rem;
+    background: #ff9a0d;
+    border-radius: 0.5rem;
+    text-align: center;
+    line-height: 3rem;
+    color: #fff; }
+
+.tip {
+  margin-left: 1rem;
+  font-size: 1.2rem;
+  color: #9A9A9A;
+  margin-top: 1rem; }
+  .tip p:nth-of-type(2) {
+    margin-top: 1.5rem; }
+
+#register1 {
+  width: 26rem;
+  height: 3rem;
+  background: #ff9a0d;
+  margin: 1rem auto;
+  border-radius: 0.5rem;
+  font-size: 1.8rem;
+  text-align: center;
+  line-height: 3rem;
+  color: #fff; }
+
+.tiaokuan {
+  margin-top: 1rem;
+  padding-left: 1rem;
+  font-size: 1.2rem;
+  line-height: 2rem; }
+  .tiaokuan .iconfont {
+    font-size: 2rem; }
+  .tiaokuan span {
+    color: #9A9A9A; }
+  .tiaokuan a {
+    margin-left: 1rem;
+    color: black;
+    text-decoration: underline; }
+
+.gougou {
+  color: cornflowerblue; }
+
+.shoudao {
+  position: absolute;
+  right: 1rem;
+  top: 4rem;
+  display: inline-block;
+  width: 6rem;
+  height: 3rem;
+  font-size: 1.5rem;
+  border-radius: 0.5rem;
+  text-align: center;
+  line-height: 3rem;
+  background-image: -webkit-linear-gradient(left, red, black);
+  background-repeat: no-repeat;
+  background-size: 4rem 1px;
+  background-position: 1rem 1.5rem; }
+
+/*# sourceMappingURL=register.css.map */
